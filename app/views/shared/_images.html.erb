@@ -1,0 +1,59 @@
+<%
+=begin%>
+ <div class="ui two column grid">
+    <% image.each do |image|%>
+      <div class="column">
+        <div class="ui fluid card">
+          <div class="image">
+            <%= image_tag image.image  %>
+          </div>
+          <div class="extra content">
+            <%= time_ago_in_words(image.created_at) %> ago 
+          </div>
+          <div class="extra content">
+            <%= link_to "View Image", image_path(image.image.id) ,class:"ui primary button" %>
+            <% if !current_user %>
+            <%= link_to "Delete Image", image_path(image.image.id) , method: :delete,class:"ui red button" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div> 
+<%              
+=end%>
+    <% image.each do |image|%>
+<div class="ui card">
+  <div class="content">
+    <div class="right floated meta">  
+    <%= time_ago_in_words(image.created_at) %> ago</div>
+    <i class="ui user icon"></i><%= image.user.full_name %>
+    <%= link_to image.user.username, profile_path(image.user.username) %>
+
+  </div>
+  <div class="image">
+            <%= image_tag image.image  %>
+  </div>
+  <div class="content">
+    <span class="right floated">
+      <i class="heart outline like icon"></i>
+      17 likes
+    </span>
+    <i class="comment icon"></i>
+     <%= image.description %>
+  </div>
+  <div class="extra content">
+    <div class="ui large transparent left icon input">
+      <i class="heart outline icon"></i>
+      <%
+=begin%>
+ <input type="text" placeholder="Add Comment..."> 
+<%
+=end%>
+    </div>
+  </div>
+</div>
+
+    <% end %>
+<br/>
+<br/>

@@ -1,0 +1,28 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular image icon"></i>
+  Image
+</h2>
+
+<div class="ui segment">
+  <div class="ui two column very relaxed grid">
+    <div class="column">
+       <%= link_to image_tag @image.image,  class:"ui medium rounded image"%>
+    </div>
+    <div class="column">
+        <%
+=begin%>
+ <h3>Name</h3><%= @image.user.full_name %><br/> 
+<%
+=end%>
+        <h3>Username</h3><%= link_to @image.user.username, profile_path(@image.user.username) %>
+        <h3>Description</h3>
+        <% if  @image.description.present? %>
+        <%=  @image.description %><br/>
+        <% end %>
+        <h3>Uploaded</h3>
+        <%= time_ago_in_words(@image.created_at) %> ago
+    </div>
+  </div>
+  <div class="ui vertical divider">
+  </div>
+</div>

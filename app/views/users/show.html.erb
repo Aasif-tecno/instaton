@@ -1,0 +1,10 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular user icon"></i>
+     <%= @user.full_name %><br/><br/>
+     <% if !current_user %>
+     <%= link_to "Edit Profile", edit_user_registration_path, class:"ui primary button" %>
+     <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete,class:"ui red button"  %>
+'    <% end %>
+</h2>
+
+<%= render 'shared/images', image: @images%>

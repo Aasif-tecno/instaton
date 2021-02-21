@@ -1,0 +1,45 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular upload icon"></i>
+  Upload Image
+</h2>
+<div class="ui form">
+  <%= form_for @image do |f| %>
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.drag_and_drop_file_field :image %>
+    </div> 
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area    :description %>
+    </div>
+    <%= f.submit "Upload" , class:"ui submit primary button"%>
+  <% end %>
+
+</div>
+
+
+=begin
+ <script>
+ (function() {
+    var reader = new FileReader()
+    var form = document.querySelector('#new_image')
+    var field = document.querySelector('#image_image')
+    var preview = document.querySelector('#asdndz-image_image')
+
+    reader.onload = function(e) {
+      preview.style.backgroundImage = `url(${e.srcElement.result})`
+    }
+
+    field.addEventListener('dnd-upload:initialize', function(e) {
+      reader.readAsDataURL(e.detail.file)
+    }, false)
+
+    form.addEventListener('click', function(e) {
+      if (event.target.dataset.dndDelete === 'true') {
+        preview.style.backgroundImage = ''
+      }
+    }, true)
+  })()
+</script> 
+<%
+=end
